@@ -39,6 +39,17 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
+.validate {
+  width: 76%;
+  color: #db2e0f;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
 form.form1 {
   padding-top: 20px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import icon from "../images/pcpIcon.svg";
-import "./Home.css";
+import icon from "../../images/pcpIcon.svg";
+import "../Home.css";
 import axios from "axios";
 
 const searchSpecificURL = "http://127.0.0.1:9000/details/";
@@ -65,7 +65,7 @@ const SearchSpecificRows = (props) => {
   );
 };
 
-class SearchSpecific extends Component {
+class DoctorWorkInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,6 +76,7 @@ class SearchSpecific extends Component {
   componentDidMount() {
     axios
       .get(searchSpecificURL + this.props.match.params.id)
+      //.get(searchSpecificURL, { params: { key: this.props.match.params.id } })
       .then((response) => {
         this.setState({
           posts: response.data,
@@ -140,4 +141,4 @@ class SearchSpecific extends Component {
     );
   }
 }
-export default SearchSpecific;
+export default DoctorWorkInfo;

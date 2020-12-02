@@ -77,7 +77,7 @@ const Jumbotron = () => {
               <button className="searchBTN">
                 Search!<i className="fa fa-search"></i>
               </button>
-              <Link className="searchBTN" to="/home/results">
+              <Link className="searchBTN" to="/home/doctors/all/general">
                 Search<i className="fa fa-search"></i>
               </Link>
             </form>

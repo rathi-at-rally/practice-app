@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Home.css";
 import Navbar from "./Navbar";
-import SearchResults from "./SearchResults";
-import SearchSpecific from "./SearchSpecific";
+import DoctorsGeneralInfo from "./Doctor/DoctorsGeneralInfo";
+import DoctorWorkInfo from "./Doctor/DoctorWorkInfo";
 import { Route, Switch } from "react-router-dom";
 
 class Home extends Component {
@@ -20,11 +20,15 @@ class Home extends Component {
         <div className="container ">
           <div className="searchContainer">
             <Switch>
-              <Route exact path="/home/results" component={SearchResults} />
               <Route
                 exact
-                path="/home/results/:id"
-                component={SearchSpecific}
+                path="/home/doctors/all/general"
+                component={DoctorsGeneralInfo}
+              />
+              <Route
+                exact
+                path="/home/doctors/specific/:id"
+                component={DoctorWorkInfo}
               />
             </Switch>
           </div>

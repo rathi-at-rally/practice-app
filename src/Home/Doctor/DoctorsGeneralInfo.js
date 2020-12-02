@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import icon from "../images/pcpIcon.svg";
-import "./Home.css";
+import icon from "../../images/pcpIcon.svg";
+import "../Home.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const searchResultURL = "http://127.0.0.1:9000/";
 
-const SearchResult = (props) => {
-  const link = "/home/results/" + props.id;
+// DoctorGeneralInfo is a functional component which refers to each search result
+const DoctorGeneralInfo = (props) => {
+  const link = "/home/doctors/specific/" + props.id;
   return (
     <div className="row ProviderList">
       <div className="col-lg-9">
@@ -51,7 +52,8 @@ const SearchResult = (props) => {
   );
 };
 
-class SearchResults extends Component {
+//DoctorsGeneralInfo corresponds to the list of search results
+class DoctorsGeneralInfo extends Component {
   state = {
     posts: [],
   };
@@ -65,9 +67,9 @@ class SearchResults extends Component {
   render() {
     return this.state.posts.map((post, index) => {
       return (
-        <SearchResult
+        <DoctorGeneralInfo
           key={index.toString + post.name}
-          id={index + 1}
+          id={post.name}
           name={post.name}
           work={post.work}
           address1={post.address1}
@@ -80,4 +82,4 @@ class SearchResults extends Component {
   }
 }
 
-export default SearchResults;
+export default DoctorsGeneralInfo;
