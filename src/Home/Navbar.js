@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
+const link = "/home/doctors/general/";
+
 const Topmenu = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-white">
@@ -62,31 +64,44 @@ const Topheader = () => {
   );
 };
 
-const Jumbotron = () => {
-  return (
-    <div className="jumbotron feature">
-      <div className="container showSearchContainer">
-        <div className="row">
-          <div className="col-lg-12">
-            <form className="example">
-              <input
-                type="text"
-                placeholder="Search for health care providers..."
-                name="search"
-              />
-              <button className="searchBTN">
-                Search!<i className="fa fa-search"></i>
-              </button>
-              <Link className="searchBTN" to="/home/doctors/all/general">
-                Search<i className="fa fa-search"></i>
-              </Link>
-            </form>
+class Jumbotron extends Component {
+  constructor(props) {
+    super(props);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.state = {
+      search: "ALL",
+    };
+  }
+
+  handleInputChange = (event) => {
+    if (event.target.value === "") this.setState({ search: "ALL" });
+    else this.setState({ search: event.target.value });
+  };
+
+  render() {
+    return (
+      <div className="jumbotron feature">
+        <div className="container showSearchContainer">
+          <div className="row">
+            <div className="col-lg-12">
+              <form className="example">
+                <input
+                  type="text"
+                  placeholder="Search for health care providers..."
+                  name="search"
+                  onChange={this.handleInputChange}
+                />
+                <Link className="searchBTN" to={link + this.state.search}>
+                  Search<i className="fa fa-search"></i>
+                </Link>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 class Navbar extends Component {
   render() {

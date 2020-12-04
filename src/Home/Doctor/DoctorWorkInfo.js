@@ -3,7 +3,7 @@ import icon from "../../images/pcpIcon.svg";
 import "../Home.css";
 import axios from "axios";
 
-const searchSpecificURL = "http://127.0.0.1:9000/details/";
+const searchSpecificURL = "http://127.0.0.1:9000/doctor/work/";
 
 const ProviderDetails = (props) => {
   return (

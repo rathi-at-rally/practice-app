@@ -6,13 +6,6 @@ import DoctorWorkInfo from "./Doctor/DoctorWorkInfo";
 import { Route, Switch } from "react-router-dom";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [],
-    };
-  }
-
   render() {
     return (
       <div>
@@ -21,8 +14,7 @@ class Home extends Component {
           <div className="searchContainer">
             <Switch>
               <Route
-                exact
-                path="/home/doctors/all/general"
+                path="/home/doctors/general/:search"
                 component={DoctorsGeneralInfo}
               />
               <Route

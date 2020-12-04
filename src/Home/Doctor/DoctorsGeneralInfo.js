@@ -4,7 +4,7 @@ import "../Home.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const searchResultURL = "http://127.0.0.1:9000/";
+const searchResultURL = "http://127.0.0.1:9000/doctor/general/";
 
 // DoctorGeneralInfo is a functional component which refers to each search result
 const DoctorGeneralInfo = (props) => {
@@ -28,9 +28,9 @@ const DoctorGeneralInfo = (props) => {
               <br />
               {props.contact}
               <br />
-              <a href="#">{props.location}</a>
-              <br />
               <a href="#">{props.vicinity}</a>
+              <br />
+              <a href="#">View Additional Locations (6)</a>
               <br />
               <a href="#">View Enrollment Information</a>
             </h6>
@@ -57,13 +57,24 @@ class DoctorsGeneralInfo extends Component {
   state = {
     posts: [],
   };
-  componentDidMount() {
-    axios.get(searchResultURL).then((response) => {
+  componentWillMount() {
+    const searchparam = this.props.match.params.search;
+    axios.get(searchResultURL + searchparam).then((response) => {
       this.setState({
         posts: response.data,
       });
     });
   }
+
+  componentDidUpdate() {
+    const searchparam = this.props.match.params.search;
+    axios.get(searchResultURL + searchparam).then((response) => {
+      this.setState({
+        posts: response.data,
+      });
+    });
+  }
+
   render() {
     return this.state.posts.map((post, index) => {
       return (
@@ -74,7 +85,7 @@ class DoctorsGeneralInfo extends Component {
           work={post.work}
           address1={post.address1}
           address2={post.address2}
-          location={post.location}
+          contact={post.contact}
           vicinity={post.vicinity}
         />
       );
