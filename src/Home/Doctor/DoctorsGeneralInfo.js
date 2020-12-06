@@ -3,8 +3,7 @@ import icon from "../../images/pcpIcon.svg";
 import "../Home.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-const searchResultURL = "http://127.0.0.1:9000/doctor/general/";
+import * as Constants from "../../utilities/Constants.js";
 
 // DoctorGeneralInfo is a functional component which refers to each search result
 const DoctorGeneralInfo = (props) => {
@@ -59,20 +58,28 @@ class DoctorsGeneralInfo extends Component {
   };
   componentWillMount() {
     const searchparam = this.props.match.params.search;
-    axios.get(searchResultURL + searchparam).then((response) => {
-      this.setState({
-        posts: response.data,
+    axios
+      .get(
+        Constants.LocalServerURL + Constants.ProviderAppend + "/" + searchparam
+      )
+      .then((response) => {
+        this.setState({
+          posts: response.data,
+        });
       });
-    });
   }
 
   componentDidUpdate() {
     const searchparam = this.props.match.params.search;
-    axios.get(searchResultURL + searchparam).then((response) => {
-      this.setState({
-        posts: response.data,
+    axios
+      .get(
+        Constants.LocalServerURL + Constants.ProviderAppend + "/" + searchparam
+      )
+      .then((response) => {
+        this.setState({
+          posts: response.data,
+        });
       });
-    });
   }
 
   render() {

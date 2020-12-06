@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import icon from "../../images/pcpIcon.svg";
 import "../Home.css";
 import axios from "axios";
-
-const searchSpecificURL = "http://127.0.0.1:9000/doctor/work/";
+import * as Constants from "../../utilities/Constants.js";
 
 const ProviderDetails = (props) => {
   return (
@@ -75,8 +74,12 @@ class DoctorWorkInfo extends Component {
   }
   componentDidMount() {
     axios
-      .get(searchSpecificURL + this.props.match.params.id)
-      //.get(searchSpecificURL, { params: { key: this.props.match.params.id } })
+      .get(
+        Constants.LocalServerURL +
+          Constants.ProviderCostAppend +
+          "/" +
+          this.props.match.params.id
+      )
       .then((response) => {
         this.setState({
           posts: response.data,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
 import axios from "axios";
-const loginURL = "http://127.0.0.1:9000/login";
+import * as Constants from "../utilities/Constants.js";
 
 class Login extends Component {
   constructor(props) {
@@ -26,7 +26,8 @@ class Login extends Component {
     event.preventDefault();
     axios
       .get(
-        loginURL +
+        Constants.LocalServerURL +
+          Constants.LoginAppend +
           "/" +
           this.state.id +
           "/" +
