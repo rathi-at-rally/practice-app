@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "../Styles/Login.css";
 import axios from "axios";
-import * as Constants from "../utilities/Constants.js";
+import * as Constants from "../../utilities/Constants.js";
 
 class Login extends Component {
   constructor(props) {

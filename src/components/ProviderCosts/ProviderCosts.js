@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import icon from "../../images/pcpIcon.svg";
-import "../Home.css";
+import "../Styles/Components.css";
 import axios from "axios";
 import * as Constants from "../../utilities/Constants.js";
 
-const ProviderDetails = (props) => {
+const Top = (props) => {
   return (
     <li className="nav-item">
       <div className="row ProviderDetails">
@@ -52,7 +52,7 @@ const SubHeading = () => {
   );
 };
 
-const SearchSpecificRows = (props) => {
+const ProviderCost = (props) => {
   return (
     <div className="row costDetails">
       <div className="col-sm-4">{props.services}</div>
@@ -64,7 +64,7 @@ const SearchSpecificRows = (props) => {
   );
 };
 
-class DoctorWorkInfo extends Component {
+class ProviderCosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,6 +72,7 @@ class DoctorWorkInfo extends Component {
       postServices: [],
     };
   }
+
   componentDidMount() {
     axios
       .get(
@@ -91,10 +92,7 @@ class DoctorWorkInfo extends Component {
   render() {
     return (
       <div className="providerContainer">
-        <ProviderDetails
-          name={this.state.posts.name}
-          work={this.state.posts.work}
-        />
+        <Top name={this.state.posts.name} work={this.state.posts.work} />
         <div className="row">
           <div className="col-sm-12">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -126,7 +124,7 @@ class DoctorWorkInfo extends Component {
                 <SubHeading />
                 {this.state.postServices.map((post, index) => {
                   return (
-                    <SearchSpecificRows
+                    <ProviderCost
                       key={index}
                       services={post.services}
                       costNear={post.costNear}
@@ -144,4 +142,4 @@ class DoctorWorkInfo extends Component {
     );
   }
 }
-export default DoctorWorkInfo;
+export default ProviderCosts;
